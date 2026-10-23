@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "likelyread": {
+      "type": "http",
+      "url": "https://app.likelyread.com/mcp"
+    }
+  }
+}

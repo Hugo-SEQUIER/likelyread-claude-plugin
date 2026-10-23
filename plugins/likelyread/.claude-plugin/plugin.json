@@ -1,0 +1,19 @@
+{
+  "name": "likelyread",
+  "displayName": "Likelyread",
+  "version": "1.0.2",
+  "description": "Ask which of your tracked emails were opened, and see campaign open rates, sending statistics and sender health from your Likelyread account.",
+  "author": {
+    "name": "Likelyread",
+    "url": "https://likelyread.com"
+  },
+  "homepage": "https://likelyread.com",
+  "repository": "https://github.com/Hugo-SEQUIER/likelyread",
+  "license": "MIT",
+  "keywords": ["email", "open tracking", "email opens", "campaigns", "deliverability"],
+  "icon": "./assets/icon.png",
+  "documentationUrl": "https://github.com/Hugo-SEQUIER/likelyread-claude-plugin/tree/main/plugins/likelyread",
+  "supportUrl": "https://github.com/Hugo-SEQUIER/likelyread/issues",
+  "privacyPolicyUrl": "https://likelyread.com/privacy",
+  "termsOfServiceUrl": "https://likelyread.com/terms"
+}

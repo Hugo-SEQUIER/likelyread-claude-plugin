@@ -1,0 +1,14 @@
+{
+  "name": "likelyread",
+  "description": "Likelyread's plugin: see which of your tracked emails were opened.",
+  "owner": {
+    "name": "Likelyread",
+    "url": "https://likelyread.com"
+  },
+  "plugins": [
+    {
+      "name": "likelyread",
+      "source": "./plugins/likelyread"
+    }
+  ]
+}
