@@ -1,8 +1,8 @@
 {
   "name": "likelyread",
   "displayName": "Likelyread",
-  "version": "1.0.2",
-  "description": "Ask which of your tracked emails were opened, and see campaign open rates, sending statistics and sender health from your Likelyread account.",
+  "version": "1.1.0",
+  "description": "Ask which of your tracked emails were opened or answered, and see campaign open and reply rates, sending statistics, sender health and which outreach tests win, from your Likelyread account.",
   "author": {
     "name": "Likelyread",
     "url": "https://likelyread.com"

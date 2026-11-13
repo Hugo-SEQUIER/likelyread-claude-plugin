@@ -1,11 +1,11 @@
 ---
 name: likelyread
-description: Check which emails tracked with Likelyread were opened, with open counts, campaign open rates, statistics and sender health. Use when the user asks whether someone opened an email, which emails or campaigns get opened, when to follow up, or whether a sending address is set up correctly. Also covers adding open tracking to emails you send, when the new_pixel and track_email tools are available.
+description: Check which emails tracked with Likelyread were opened or answered, with open counts, campaign open and reply rates, statistics, sender health and the user's outreach systems (which tested option wins). Use when the user asks whether someone opened or answered an email, which emails or campaigns get opened or replies, what works in their outreach, when to follow up, or whether a sending address is set up correctly. Also covers adding open tracking to emails you send, when the new_pixel and track_email tools are available.
 ---
 
 # Likelyread
 
-Likelyread tells the user which of their emails were opened. A 1x1 image (the pixel) at the end of an email's HTML part records a hit when the recipient's mail app loads it. The server classifies each hit as an open, a self-view (the user looking at their own email) or an Apple prefetch.
+Likelyread tells the user which of their emails were opened and answered. A 1x1 image (the pixel) at the end of an email's HTML part records a hit when the recipient's mail app loads it. The server classifies each hit as an open, a self-view (the user looking at their own email) or an Apple prefetch.
 
 If no Likelyread tool is available, Likelyread is not connected yet: ask the user to connect it and sign in with their Likelyread account.
 
@@ -21,17 +21,21 @@ Every Likelyread connection has these tools:
 
 | Tool | Gives |
 |---|---|
-| `account` | The plan, emails tracked today, the daily limit, history_days, and pro_features: whether campaigns, stats and sender health are available |
-| `list_emails` | Tracked emails, newest first, with their status (opened, not_opened or prefetch_only) and open counts. Filters: status, campaign, sender, and query (subject, recipient or campaign). Pass next_offset as offset for more |
+| `account` | The plan, emails tracked today, the daily limit, history_days, and pro_features: whether campaigns, stats, sender health and systems are available |
+| `list_emails` | Tracked emails, newest first, with their status (opened, not_opened or prefetch_only), open counts and replied_at (when a recipient answered, or null). Status replied lists the answered ones. Filters: status, campaign, sender, and query (subject, recipient or campaign). Pass next_offset as offset for more |
 | `get_email` | One email and its hits: time, kind (open, self or prefetch), via, and the reason for the kind |
-| `list_campaigns` | Per campaign: emails, opened, open rate and median time to first open |
+| `list_campaigns` | Per campaign: emails, opened, open rate, median time to first open, replied, reply rate and median time to reply |
 | `get_stats` | Totals, a daily timeline of sends and opens, opens by hour and the latest opens |
 | `sender_health` | SPF, DKIM and DMARC of a sending address, its safe daily pace (ramp.remaining) and its open-rate trend |
 | `campaign_names` | Existing campaign names, to reuse exactly |
 | `set_campaign` | Moves an email to another campaign, or to none. Use it only when the user asks |
+| `mark_replied` | Marks an email as answered, or not. Use it when the user says a recipient replied |
+| `list_systems` | The user's outreach systems: goal and target, tests (one campaign each, with an option per thing they change, such as Hook: Question) and, per thing they change, whether an option is a clear winner |
+| `save_system`, `save_experiment` | Create or change a system or a test. Use them only when the user asks; change one thing at a time between tests |
 
 - To answer "did they open it?", find the email with list_emails (query: the recipient or words of the subject), then read its hits with get_email.
 - Times (sent_at, first_open, last_open and hit times) are Unix seconds: give them in the user's time zone. get_stats counts days and hours in UTC unless you pass tz_minutes, the user's offset east of UTC in minutes.
+- To answer "what works?", read list_systems: report only clear winners as winners (result.status clear); otherwise say which option leads and that it is not sure yet.
 - Only hits of kind open are opens. Gmail caches images, so repeat opens may not show. Apple Mail Privacy Protection loads images on delivery: that is a prefetch, not an open. Some mail apps block images, so a missing open does not prove the email was ignored. Use opens to time a follow-up.
 
 Without a tool that tracks, you cannot add tracking to the emails you send. If the user asks for it, say so: the Likelyread Chrome extension tracks the emails they send from Gmail.
