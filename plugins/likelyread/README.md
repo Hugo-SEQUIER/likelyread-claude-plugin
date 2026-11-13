@@ -12,11 +12,11 @@ This plugin connects Claude to your Likelyread account and adds a skill that tel
 - At what hours do my emails get opened?
 - Are SPF, DKIM and DMARC set up for my sending address?
 
-In Claude on the web, desktop and mobile, the connection reads results: your tracked emails and their opens, the hits on one email, campaign open rates, statistics and sender health. It can also move an email to another campaign. It does not add tracking to emails Claude writes there: the Likelyread Chrome extension tracks the emails you send from Gmail.
+In Claude on the web, desktop and mobile, the connection reads results: your tracked emails, their opens and replies, the hits on one email, campaign open and reply rates, statistics, sender health and your outreach systems (which tested option wins). It can also move an email to another campaign, mark an email as answered, and log a test in a system. It does not add tracking to emails Claude writes there: the Likelyread Chrome extension tracks the emails you send from Gmail.
 
 In Claude Code, the connection also has the tools that add the pixel to the emails Claude sends and register them. Claude asks you before tracking a campaign, and tracks only recipients who agreed to it where the law requires consent, as in the EU.
 
-Campaign analytics, statistics and sender health are not available on every Likelyread plan. When one of them is not on yours, Claude tells you.
+Campaign analytics, statistics, sender health and systems are not available on every Likelyread plan. When one of them is not on yours, Claude tells you.
 
 ## Set it up
 
